@@ -1,0 +1,15 @@
+/* Component Box  */
+.body_componentBox{
+    width: 30%;
+    min-width: 250px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    border-radius: 20px;
+}
+.boxComponent{
+    text-decoration: none;
+}

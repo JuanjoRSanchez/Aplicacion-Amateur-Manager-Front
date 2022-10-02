@@ -1,0 +1,20 @@
+.body_principal{
+    background-color: rgb(226, 183, 66);
+    width: 100%;
+    min-width: 300px;
+    height: auto;
+  
+}
+.principal_boxComponent{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+

@@ -1,0 +1,17 @@
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.cuadro_aviso{
+    position: absolute;
+    width: 350px;
+    background-color: rgb(204, 158, 32);
+    color: aliceblue;
+    padding: 50px;
+    border-radius: 20px;
+    border: 2px solid white;
+}

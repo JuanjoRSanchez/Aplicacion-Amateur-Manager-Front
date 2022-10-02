@@ -1,0 +1,13 @@
+.btnBorrarPartido {
+    position: relative;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    margin-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color: brown;
+    color: aliceblue;
+
+}
