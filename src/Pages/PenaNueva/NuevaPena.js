@@ -1,17 +1,19 @@
 import FormComponentPena from './FormComponentPena'
 import Header from '../GeneralComponents/Header/Header'
 import Footer from '../GeneralComponents/Footer/Footer'
-import { useParams } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth';
 
 export default function NuevaPena() {
-    const idGestor = useParams();
-    console.log('idGestor: nueva ' +  idGestor.id)
+    const idGestor = useAuth().auth.user;
+
+    //const idGestor = useParams();
+    console.log('idGestor: nueva ' +  idGestor)
 
     return (
         <>
             <Header />
             <div className='body_principal'>
-                <FormComponentPena idGestor={idGestor.id} />
+                <FormComponentPena idGestor={idGestor} />
             </div>
             <Footer />
         </>

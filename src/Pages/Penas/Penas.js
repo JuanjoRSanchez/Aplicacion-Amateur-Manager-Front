@@ -5,12 +5,13 @@ import Header from '../GeneralComponents/Header/Header'
 import Footer from '../GeneralComponents/Footer/Footer'
 import './penas.css'
 import ComponentGeneralBox from '../GeneralComponents/ComponentesPrincipal/ComponentGeneralBox';
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth';
 
 export default function Penas() {
-    const idGestor = useParams();
-    console.log(idGestor)
-    const baseURL = "http://localhost:9011/pena/listPena/" + idGestor.idGestor;
+    const idGestor = useAuth().auth.user;
+    console.log('idGestor: ' + idGestor)
+    const baseURL = "http://localhost:9011/pena/listPena/" + idGestor;
 
     const [penas, setPenas] = useState([]);
     const [succes, setSucces] = useState('false');
@@ -32,11 +33,11 @@ export default function Penas() {
     }, [baseURL, succes]);
 
     return (
-        <div>
+        <div className='body_principal'>
             <Header />
             <div className='body_principal'>
-                <div>
-                    <Link to={`/nuevaPena/${idGestor.idGestor}`} >Añadir nueva Peña</Link>
+                <div className='nuevoBox'>
+                    <Link to={`/nuevaPena/${idGestor}`} >Añadir nueva Peña</Link>
                 </div>
                 <div className='principal_boxComponent'>
                     {penas.map((pena, index) => {
@@ -51,49 +52,3 @@ export default function Penas() {
     )
 }
 
-/*
-<div>
-            <Header />
-            <div className='body_principal'>
-                <div className='principal_boxComponent'>
-                    {
-                    penas.map((pena, index) => {
-                        return <Link to={`/penaDetalle/${pena.id}`}>
-                            <ComponentGeneralBox key={index} title={pena.nombre} />
-                        </Link>;
-                    })}
-                </div>
-
-            </div>
-            <Footer />
-        </div>
-
- <>
-
-
-        
-            {succes ? (
-                <div>
-                    <Header />
-                    <div className='body_principal'>
-                        <div className='principal_boxComponent'>
-                            {penas.map((pena, index) => {
-                                return <Link to={`/penaDetalle/${pena.id}`}>
-                                    <ComponentGeneralBox key={index} title={pena.nombre} />
-                                </Link>;
-                            })}
-                        </div>
-
-                    </div>
-                    <Footer />
-                </div>
-            ) : (
-                <div>
-                <Link >Añadir nueva Peña</Link>
-                <p>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</p>
-                </div>
-
-            )
-            }
-        </>
-*/

@@ -21,7 +21,6 @@ export default function FormComponentPost(props) {
 
     const [errMsg, setErrMsg] = useState('');
     const [succes, setSucces] = useState(false);
-    const [idGestor, setGestor] = useState('');
 
     useEffect(() => {
         setErrMsg('');
@@ -43,7 +42,6 @@ export default function FormComponentPost(props) {
                 const response = await axios.post(URL,
                     body);
                 console.log('respuesta: ' + JSON.stringify(response?.data))
-                setGestor(response.data);
                 setAuth({ nombre, pass });
                 setNombre('')
                 setPass('')
@@ -72,7 +70,7 @@ export default function FormComponentPost(props) {
                     <h1>Estas Registrado</h1>
                     <br />
                     <p>
-                        <Link to={`/inicio/${idGestor}`} >Ir a inicio</Link>
+                        <Link to='/login' >Ir a inicio</Link>
                     </p>
                 </section>
             ) : (

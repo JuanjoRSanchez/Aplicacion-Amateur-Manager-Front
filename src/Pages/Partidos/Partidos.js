@@ -40,41 +40,43 @@ export default function Partidos() {
     }, [baseURL, mounted, partidos]);
 
     let date = new Date();
+
     let dateString = date.toISOString().split('T')[0];
+    console.log('fecha de hoy: ' + dateString)
+
     if (!partidos) return null;
     let partidosPasados = [];
     let partidosFuturos = [];
     function extraerPartidosPasados() {
+
         partidos.map((partido, index) => {
-            if (dateString.split('-')[0] >= partido.fechaPartido.split('-')[0] && 
-                dateString.split('-')[1] >= partido.fechaPartido.split('-')[1] &&
-                dateString.split('-')[2] >= partido.fechaPartido.split('-')[2] ) 
-            {
+            if (dateString >= partido.fechaPartido.split(' ')[0]) {
                 partidosPasados.push(partido);
-            } 
+            }
             else {
                 partidosFuturos.push(partido);
             }
             return null;
         })
-
     }
 
     extraerPartidosPasados();
     return (
-        <div>
+        <div className='body_principal'>
             <Header />
-            <Link to={`/nuevoPartido/${idPena.id}`} >Nuevo partido</Link>
+            <div className='nuevoBox'>
+                <Link to={`/nuevoPartido/${idPena.id}`} >Nuevo partido</Link>
+            </div>
             <div className='body_principal'>
                 <p>Partidos pasados</p>
                 <div className='principal_boxComponent'>
                     {partidosPasados.map((partido, index) => {
                         return <>
-                            <ComponentePartidoBox key={index} 
-                            title={partido.fechaPartido.split(' ')[0]} 
-                            golesBlanco={partido.marcadorBlanco}
-                            golesNegro={partido.marcadorNegro}
-                            id={partido.id}
+                            <ComponentePartidoBox key={index}
+                                title={partido.fechaPartido.split(' ')[0]}
+                                golesBlanco={partido.marcadorBlanco}
+                                golesNegro={partido.marcadorNegro}
+                                id={partido.id}
                             />
                         </>
                     })}
@@ -82,14 +84,14 @@ export default function Partidos() {
                 <p>Partidos futuros</p>
                 <div className='principal_boxComponent'>
                     {partidosFuturos.map((partido, index) => {
-                        return <> 
-                            <ComponentePartidoBox key={index} 
-                            title={partido.fechaPartido.split(' ')[0]} 
-                            golesBlanco={partido.marcadorBlanco}
-                            golesNegro={partido.marcadorNegro}
-                            id={partido.id}
-                         />
-                         </>
+                        return <>
+                            <ComponentePartidoBox key={index}
+                                title={partido.fechaPartido.split(' ')[0]}
+                                golesBlanco={partido.marcadorBlanco}
+                                golesNegro={partido.marcadorNegro}
+                                id={partido.id}
+                            />
+                        </>
                     })}
                 </div>
             </div>

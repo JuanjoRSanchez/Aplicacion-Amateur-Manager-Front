@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import Header from '../GeneralComponents/Header/Header'
 import Footer from '../GeneralComponents/Footer/Footer'
@@ -7,13 +7,13 @@ import ComponentGeneralBox from '../GeneralComponents/ComponentesPrincipal/Compo
 import '../../assets/Styles/principal.css'
 
 export default function Principal() {
-    const idGestor = useParams();
+    
     return (
-        <div>
+        <div className='body_principal'>
             <Header />
             <div className='body_principal'>
                 <div className='principal_boxComponent'>
-                <Link to={`/penas/${idGestor.idGestor}`} ><ComponentGeneralBox title='Peñas' key={'1'} /></Link>
+                <Link to={`/penas`} ><ComponentGeneralBox title='Peñas' key={'1'} /></Link>
                 <Link to='/perfil' ><ComponentGeneralBox title='Mi perfil' key={'3'}/></Link>
                 </div>
             </div>

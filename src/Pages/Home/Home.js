@@ -17,7 +17,6 @@ export default function Home() {
                 <div className='botonera_home'>
                     <button className='btn_home'><Link to='/login' >Login</Link></button>
                     <button className='btn_home'><Link to='/registro' >Registrarse</Link></button>
-                    <button className='btn_home'><Link to='/principal' >Entrada libre</Link></button>
                 </div>
             </div>
         </>

@@ -6,7 +6,7 @@ import FormComponentLogin from './FormComponentLogin'
 export default function Login() {
 
     return (
-        <div>
+        <div className='body_principal'>
             <Header />
             <div className='body_principal'>
                 <FormComponentLogin />

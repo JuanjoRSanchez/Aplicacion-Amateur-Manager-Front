@@ -60,7 +60,7 @@ export default function Partidos(props) {
                     <h1>Estas Logeado</h1>
                     <br />
                     <p>
-                        <Link to={`/inicio/${idGestor}`} >Ir a inicio</Link>
+                        <Link to={`/inicio`} >Ir a inicio</Link>
                     </p>
                 </section>
             ) : (

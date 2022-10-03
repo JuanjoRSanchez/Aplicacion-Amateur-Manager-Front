@@ -1,19 +1,23 @@
-import React, { useEffect, useRef, useState, useContext } from 'react';
-import AuthContext from '../../context/AuthProvider';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import userAuth from '../../hooks/useAuth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 
 export default function Partidos() {
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth } = userAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/inicio";
+
     const userRef = useRef();
     const errRef = useRef();
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [succes, setSucces] = useState(false);
-    const [idPena, setIdPena] = useState('');
+    // const [idPena, setIdPena] = useState('');
 
     const baseURL = "http://localhost:9011/gestor/login";
 
@@ -36,13 +40,12 @@ export default function Partidos() {
             const response = await axios.post(baseURL,
                 body);
             console.log('respuesta: ' + JSON.stringify(response?.data))
-            setIdPena(response.data)
+            //setIdPena(response.data)
             setAuth({ user, pwd })
-            setUser('');
-            setPwd('');
-           
             if (response?.data !== 0) {
-                setSucces('true')   
+                setUser('');
+                setPwd('');
+                navigate(from, { replace: true });
             }
         } catch (error) {
             if (!error?.response) {
@@ -61,15 +64,6 @@ export default function Partidos() {
 
     return (
         <div>
-            {succes ? (
-                <section>
-                    <h1>Estas Logeado</h1>
-                    <br />
-                    <p>
-                        <Link to={`/inicio/${idPena}`} >Ir a inicio</Link>
-                    </p>
-                </section>
-            ) : (
                 <div className='form_box'>
                     <form className="form" onSubmit={handleSubmit}>
                         <p ref={errRef} className={errMsg ? "errmsg" : "offsscreen"} aria-live="assertive">{errMsg}</p>
@@ -112,8 +106,7 @@ export default function Partidos() {
                         </p>
                     </form>
                 </div>
-            )}
-        </div>
+            </div>
     )
 }
 

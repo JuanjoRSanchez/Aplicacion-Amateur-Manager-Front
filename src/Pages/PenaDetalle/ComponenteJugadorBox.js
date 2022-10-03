@@ -31,6 +31,9 @@ export default function ComponenteJugadorBox(props) {
                     </div>
                 </fieldset>
             </div>
+            <div>
+                <button >Eliminar</button>
+            </div>
         </div>
 
     )

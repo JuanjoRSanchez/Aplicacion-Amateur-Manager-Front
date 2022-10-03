@@ -33,7 +33,7 @@ export default function FormComponentPutJugador(props) {
                 console.log(error.config);
             });
         }
-       getFunction();
+        getFunction();
 
     }, [baseURL, jugadores]);
 
@@ -64,7 +64,7 @@ export default function FormComponentPutJugador(props) {
                         name="marcadorBlanco"
                         className="input"
                         ref={marcador_blanco}
-                       onChange={(e) => setMarcadorB(e.target.value)}
+                        onChange={(e) => setMarcadorB(e.target.value)}
                     />
                 </div>
                 <div className="inputContainer">
@@ -80,13 +80,13 @@ export default function FormComponentPutJugador(props) {
                 <div className="inputContainer">
                     <label htmlFor="" className="label">Añadir jugadores:</label>
                     <select name="select">
-                        {              
-                                jugadores.map((jugador, index) => {
-                                    return (
-                                       
-                                          <option value="value1" key={index}>{jugador.nombre}</option>                                   
-                                    )                                                               
-                                })              
+                        {
+                            jugadores.map((jugador, index) => {
+                                return (
+
+                                    <option value="value1" key={index}>{jugador.nombre}</option>
+                                )
+                            })
                         }
                     </select>
                 </div>
@@ -96,11 +96,13 @@ export default function FormComponentPutJugador(props) {
                 {status && status}
             </form>
             <div className='principal_boxComponent'>
-                    {jugadores.map((jugador, index) => {
-                        return <ComponenteJugadorBox nombre={jugador.nombre}/>                                           
-                    })}
-                </div>
-            
+                {jugadores.map((jugador, index) => {
+                    return <ComponenteJugadorBox nombre={jugador.nombre} />
+                })}
+            </div>
+            <div>
+                <button type='button' className='btnBorrarPartido'>Borrar partido</button>
+            </div>
         </div>
     )
 }
