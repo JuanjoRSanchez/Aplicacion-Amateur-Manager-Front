@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom'
 
 export default function ComponentPartidoBox(props) {
     let marcador = 'Resultado: ' + props.golesBlanco + ' : ' + props.golesNegro; 
+    console.log('props.id: ' + props.id + ' props.idPena: '  + props.idPena)
    
     return (
         <div className='body_componentBox'>
-            <Link to={`/partidoDetalle/${props.id}`}  className='tit'>Modificar</Link>
+            <Link to={`/inicio/penaDetalleGate/pg/partidoDetalle/${props.id}/${props.idPena}`}  className='tit'>Modificar</Link>
             <div className="boxPartido">
                 <p>Fecha</p>
             <br/>

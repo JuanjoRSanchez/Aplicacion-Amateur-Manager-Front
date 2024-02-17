@@ -9,7 +9,7 @@ export default function Partidos() {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/inicio";
+    const from = location.state?.from?.pathname || "/inicio/penas";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -19,7 +19,9 @@ export default function Partidos() {
     const [errMsg, setErrMsg] = useState('');
     // const [idPena, setIdPena] = useState('');
 
-    const baseURL = "http://localhost:9011/gestor/login";
+    //const baseURL = "http://localhost:9011/gestor/login";
+
+    const baseURL = "http://localhost:9011/auth/authenticate";
 
     useEffect(() => {
         userRef.current.focus();
@@ -34,7 +36,7 @@ export default function Partidos() {
         e.preventDefault();
         const body = {
             name: user,
-            pass: pwd
+            password: pwd
         }
         try {
             const response = await axios.post(baseURL,
@@ -110,47 +112,3 @@ export default function Partidos() {
     )
 }
 
-/*
- <p>Identificador de partido: {partido.id} / Fecha: {partido.fechaCreacion} </p>
-
-
- const baseURL = "http://localhost:9011/gestor/login";
-    const [gestor, setGestor] = useState([]);
-
-    const email = useRef();
-    const pass = useRef();
-
-
-    const loginFunction = () => {
-        let emailFrom = email;
-        let passFrom = pass;
-        let body = {
-            email: emailFrom,
-            pass: passFrom
-        }
-        axios.get(baseURL, body).then((response) => {
-            setGestor(response.data);
-            if(gestor === 0){
-                window.location('/principal')
-                console.log(gestor)
-            }else{
-                console.log(gestor)
-            }
-        }).catch(function (error) {
-            if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                console.log(error.request);
-            } else {
-                console.log('Error', error.message);
-            }
-            console.log(error.config);
-        });
-    }
-    
-
-
-    if (!gestor) return null;
-*/

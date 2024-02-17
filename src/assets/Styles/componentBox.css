@@ -18,3 +18,9 @@
 .boxComponent {
     text-decoration: none;
 }
+
+.titleBox{
+    width: 100%;
+   /* border: 1px solid red;*/
+    text-align: center;
+}

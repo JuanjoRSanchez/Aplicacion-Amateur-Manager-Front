@@ -6,9 +6,18 @@ import Footer from '../GeneralComponents/Footer/Footer'
 import './penas.css'
 import ComponentGeneralBox from '../GeneralComponents/ComponentesPrincipal/ComponentGeneralBox';
 import { Link } from 'react-router-dom'
+//import { Outlet } from 'react-router-dom'
+//import { Navigate } from "react-router-dom";
+
 import useAuth from '../../hooks/useAuth';
 
 export default function Penas() {
+    /*const { user } = useAuth();
+
+    if (!user) {
+      return <Navigate to="/" />;
+    }
+*/
     const idGestor = useAuth().auth.user;
     console.log('idGestor: ' + idGestor)
     const baseURL = "http://localhost:9011/pena/listPena/" + idGestor;
@@ -37,15 +46,17 @@ export default function Penas() {
             <Header />
             <div className='body_principal'>
                 <div className='nuevoBox'>
-                    <Link to={`/nuevaPena/${idGestor}`} >Añadir nueva Peña</Link>
+                    <Link to={`inicio/penaDetalleGate/nuevaPena/${idGestor}`} >Añadir nueva Peña</Link>
                 </div>
                 <div className='principal_boxComponent'>
                     {penas.map((pena, index) => {
-                        return <Link to={`/penaDetalle/${pena.id}`}>
+                        return <Link to={`/inicio/penaDetalleGate/penaDetalle/${pena.id}`}>
                             <ComponentGeneralBox key={index} title={pena.nombre} />
                         </Link>;
                     })}
+
                 </div>
+
             </div>
             <Footer />
         </div>

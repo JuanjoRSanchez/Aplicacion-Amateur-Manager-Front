@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../GeneralComponents/Header/Header'
 import Footer from '../GeneralComponents/Footer/Footer'
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ComponentGeneralBox from '../GeneralComponents/ComponentesPrincipal/ComponentGeneralBox';
@@ -40,15 +40,16 @@ export default function PenaDetalle(props) {
     if (!pena) return null;
 
     return (
-        <div>
+        <div className='body_principal'>
             <Header />
             <div className='body_principal'>
                 <div className='principal_boxComponent'>
-                    <Link to={`/partidos/${pena.id}`}><ComponentGeneralBox title='Partidos' /></Link>
-                    <Link to={`/jugadores/${pena.id}`}><ComponentGeneralBox title='Jugadores' /></Link>
+                    <Link to={`/inicio/penaDetalleGate/pg/partidos/${pena.id}`}><ComponentGeneralBox title='Partidos' /></Link>
+                    <Link to={`/inicio/penaDetalleGate/pj/jugadores/${pena.id}`}><ComponentGeneralBox title='Jugadores' /></Link>
                 </div>
             </div>
             <Footer />
+            <Outlet />
         </div>
     )
 }

@@ -23,9 +23,3 @@ export default function Home() {
     )
 
 }
-
-/*
-
-                    
-
-*/

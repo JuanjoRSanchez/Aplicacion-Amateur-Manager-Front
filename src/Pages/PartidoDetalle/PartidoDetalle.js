@@ -9,15 +9,19 @@ import FormComponentPartido from './FormComponentPartido';
 
 
 export default function PenaDetalle(props) {
-    const { idPartido } = useParams();
-    console.log('idPartido: ' + idPartido)
+    const { idPartido, idPena } = useParams({});
+    /*
+    const idPartido = id.idPartido;
+    const idPena = id.idPena;
+    */
+    console.log('idPartido: ' + idPartido + ' idPena: ' + idPena)
 
     return (
         <div className='body_principal'>
             <Header />
             <div className='body_principal'>
                 <div className='principal_boxComponent'>
-                    <FormComponentPartido id={idPartido}/>
+                    <FormComponentPartido idPartido={idPartido} idPena={idPena}/>
                 </div>
                
             </div>
@@ -27,10 +31,5 @@ export default function PenaDetalle(props) {
     )
 }
 
-/*
 
-
-<FormComponent fechaPartido={partido.fechaPartido} marcadorBlanco={partido.marcadorBlanco} marcadorNegro={partido.marcadorNegro}/>
-
-*/
 

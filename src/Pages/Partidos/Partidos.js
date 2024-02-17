@@ -10,8 +10,8 @@ import { useParams } from 'react-router-dom';
 export default function Partidos() {
 
     const idPena = useParams();
-    console.log('idPena: ' + idPena.id)
-    const baseURL = "http://localhost:9011/partido/idPena/" + idPena.id;
+    console.log('idPena: ' + idPena.idPena)
+    const baseURL = "http://localhost:9011/partido/idPena/" + idPena.idPena;
     const [partidos, setPartidos] = useState([]);
     const [mounted, setMounted] = useState(false)
 
@@ -59,13 +59,12 @@ export default function Partidos() {
             return null;
         })
     }
-
     extraerPartidosPasados();
     return (
         <div className='body_principal'>
             <Header />
             <div className='nuevoBox'>
-                <Link to={`/nuevoPartido/${idPena.id}`} >Nuevo partido</Link>
+                <Link to={`/inicio/penaDetalleGate/pg/nuevoPartido/${idPena.idPena}`} >Nuevo partido</Link>
             </div>
             <div className='body_principal'>
                 <p>Partidos pasados</p>
@@ -77,6 +76,7 @@ export default function Partidos() {
                                 golesBlanco={partido.marcadorBlanco}
                                 golesNegro={partido.marcadorNegro}
                                 id={partido.id}
+                                idPena={idPena.idPena}
                             />
                         </>
                     })}
@@ -90,6 +90,7 @@ export default function Partidos() {
                                 golesBlanco={partido.marcadorBlanco}
                                 golesNegro={partido.marcadorNegro}
                                 id={partido.id}
+                                idPena={idPena.idPena}
                             />
                         </>
                     })}

@@ -8,8 +8,7 @@ import ComponenteJugadorBox from "./ComponenteJugadorBox";
 
 export default function Jugadores() {
     const idPena = useParams();
-    console.log('idPena jugadores: ' + idPena.idPena)
-    const baseURL = "http://localhost:9011/jugador/pena/" + idPena.idPena;
+    const baseURL = "http://localhost:9011/jugador/all/" + idPena.idPena;
     const [jugadores, setJugadores] = useState([]);
     const [mounted, setMounted] = useState(false)
 
@@ -44,14 +43,16 @@ export default function Jugadores() {
             <Header />
             <div className='body_principal'>
                 <div>
-                    <Link to='#' >Añadir nuevo jugador</Link>
+                    <div className='nuevoBox'>
+                        <Link to={`/inicio/penaDetalleGate/pj/nuevoJugador/${idPena.idPena}`} >Añadir nuevo jugador</Link>
+                    </div>
                     <div className='principal_boxComponent'>
-                    {jugadores.map((jugador, index) => {
-                        return <Link to={`/jugadorDetalle/${jugador.id}`}>
-                            <ComponenteJugadorBox key={index} title={jugador.nombre} id={jugador.id} />
-                        </Link>;
-                    })}
-                </div>
+                        {jugadores.map((jugador, index) => {
+                            return <Link to={`inicio/penaDetalleGate/jugadorDetalle/${jugador.id}`}>
+                                <ComponenteJugadorBox key={index} title={jugador.nombre} idJugador={jugador.id}  idPena={idPena.idPena}/>
+                            </Link>;
+                        })}
+                    </div>
                     <FormComponentJugador />
                 </div>
                 <Footer />
